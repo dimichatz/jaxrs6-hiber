@@ -21,7 +21,7 @@ public class Mapper {
     }
 
     public static Teacher mapToTeacher(TeacherUpdateDTO dto) {
-        return new Teacher(null, dto.getVat(), dto.getFirstname(), dto.getLastname());
+        return new Teacher(dto.getId(), dto.getVat(), dto.getFirstname(), dto.getLastname());
     }
 
     public static TeacherReadOnlyDTO mapToTeacherReadOnlyDTO(Teacher teacher) {
