@@ -51,8 +51,8 @@ public class JwtAuthenticationFilter implements ContainerRequestFilter {
 
         try {
             String username = jwtService.extractSubject(token);
-            if (username != null
-                    && securityContext == null || securityContext.getUserPrincipal() == null) {
+            if (username != null &&
+                    securityContext == null || securityContext.getUserPrincipal() == null) {
                 User user = userDAO.getByUsername(username).orElse(null);
                 if (user != null && jwtService.isTokenValid(token, user)) {
                     requestContext.setSecurityContext(new CustomSecurityContext(user));
