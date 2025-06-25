@@ -48,10 +48,11 @@ public class JwtAuthenticationFilter implements ContainerRequestFilter {
         }
 
         String token = authorizationHeader.substring("Bearer ".length()).trim();
-        try {
 
+        try {
             String username = jwtService.extractSubject(token);
-            if (username != null && securityContext == null || securityContext.getUserPrincipal() == null) {
+            if (username != null
+                    && securityContext == null || securityContext.getUserPrincipal() == null) {
                 User user = userDAO.getByUsername(username).orElse(null);
                 if (user != null && jwtService.isTokenValid(token, user)) {
                     requestContext.setSecurityContext(new CustomSecurityContext(user));
@@ -66,7 +67,7 @@ public class JwtAuthenticationFilter implements ContainerRequestFilter {
 
 
     private boolean isPublicPath(String path) {
-        return path.equals("/auth/register") || path.equals("/auth/login");
+        return path.equals("auth/register") || path.equals("auth/login");
 
     }
 }
