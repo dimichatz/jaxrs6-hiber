@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 @ApplicationScoped
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
+//@Slf4j
 public class UserServiceImpl implements IUserService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
     private final IUserDAO userDAO;
